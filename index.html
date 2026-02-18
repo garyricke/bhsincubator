@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INCubator@BHS — Networking Fundraiser at Penrose Brewing</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ───── RESET & BASE ───── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #000;
+  background: #fff;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+/* ───── PALETTE ───── */
+:root {
+  --gold:   #FACC08;
+  --maroon: #AC161D;
+  --black:  #000000;
+  --white:  #FFFFFF;
+  --silver: #D1D1D1;
+}
+
+/* ───── UTILITY ───── */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.btn {
+  display: inline-block;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .3s ease;
+  border: none;
+  letter-spacing: .5px;
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--black);
+  box-shadow: 0 4px 20px rgba(250,204,8,.45);
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(250,204,8,.6);
+}
+.btn-maroon {
+  background: var(--maroon);
+  color: var(--white);
+  box-shadow: 0 4px 20px rgba(172,22,29,.35);
+}
+.btn-maroon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(172,22,29,.5);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--black);
+}
+.btn-outline-dark {
+  background: transparent;
+  color: var(--maroon);
+  border: 2px solid var(--maroon);
+}
+.btn-outline-dark:hover {
+  background: var(--maroon);
+  color: var(--white);
+}
+.section-label {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--maroon);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.gold-accent { color: var(--gold); }
+.maroon-accent { color: var(--maroon); }
+
+/* ───── STICKY NAV ───── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 1000;
+  padding: 14px 0;
+  transition: all .4s ease;
+  background: transparent;
+}
+.navbar.scrolled {
+  background: rgba(0,0,0,.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0,0,0,.3);
+  padding: 8px 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.nav-logo img { height: 44px; transition: height .3s ease; }
+.navbar.scrolled .nav-logo img { height: 36px; }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: .85rem;
+  letter-spacing: .5px;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--black) !important;
+  padding: 10px 24px !important;
+  border-radius: 50px !important;
+  font-size: .82rem !important;
+}
+.nav-cta:hover { box-shadow: 0 4px 16px rgba(250,204,8,.5); }
+.mobile-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+}
+.mobile-toggle span {
+  display: block; width: 26px; height: 3px;
+  background: var(--white); margin: 5px 0;
+  border-radius: 2px; transition: all .3s;
+}
+
+/* ───── HERO ───── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-video {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.55) 0%,
+    rgba(0,0,0,.35) 40%,
+    rgba(0,0,0,.65) 100%
+  );
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  max-width: 820px;
+  padding: 0 24px;
+}
+.hero-logo { width: 280px; max-width: 70vw; margin-bottom: 28px; filter: drop-shadow(0 4px 20px rgba(0,0,0,.4)); }
+.hero-tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(.9rem, 2.2vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--gold);
+}
+.hero-headline {
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 30px rgba(0,0,0,.4);
+}
+.hero-sub {
+  font-size: clamp(.95rem, 1.8vw, 1.15rem);
+  max-width: 620px;
+  margin: 0 auto 36px;
+  opacity: .92;
+  line-height: 1.6;
+}
+.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s infinite;
+}
+.scroll-hint svg { width: 28px; height: 28px; stroke: var(--white); opacity: .7; }
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* ───── EVENT DETAILS ───── */
+.event-details {
+  background: var(--black);
+  color: var(--white);
+  padding: 80px 0;
+}
+.event-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.event-info h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.detail-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 28px 0 36px;
+}
+.detail-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(255,255,255,.06);
+  border-radius: 12px;
+  padding: 18px 20px;
+  border-left: 4px solid var(--gold);
+}
+.detail-card .icon {
+  flex-shrink: 0;
+  width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gold);
+  border-radius: 10px;
+}
+.detail-card .icon svg { width: 22px; height: 22px; stroke: var(--black); fill: none; }
+.detail-card h4 { font-size: .82rem; color: var(--gold); margin-bottom: 4px; letter-spacing: 1px; text-transform: uppercase; }
+.detail-card p { font-size: .98rem; line-height: 1.5; }
+.venue-card {
+  background: rgba(255,255,255,.04);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.venue-logo { max-width: 220px; margin-bottom: 20px; filter: brightness(1.1); }
+.venue-card h3 { font-size: 1.3rem; margin-bottom: 8px; color: var(--white); }
+.venue-card p { color: var(--silver); font-size: .95rem; line-height: 1.5; margin-bottom: 20px; }
+
+/* ───── TICKET INCLUDES ───── */
+.ticket-includes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+  text-align: left;
+}
+.ticket-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .9rem;
+  color: var(--silver);
+}
+.ticket-item svg { width: 18px; height: 18px; stroke: var(--gold); flex-shrink: 0; fill: none; }
+
+/* ───── ABOUT ───── */
+.about {
+  padding: 100px 0;
+  background: var(--white);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-image-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.12);
+}
+.about-image-wrapper img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.about-image-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 6px;
+  background: linear-gradient(90deg, var(--maroon), var(--gold));
+}
+.about-text p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 16px;
+}
+.stat-row {
+  display: flex;
+  gap: 32px;
+  margin: 32px 0;
+}
+.stat {
+  text-align: center;
+  cursor: pointer;
+  transition: transform .3s;
+}
+.stat:hover { transform: translateY(-4px); }
+.stat-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--maroon);
+  line-height: 1;
+}
+.stat-label {
+  font-size: .78rem;
+  color: #666;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* ───── HOW IT WORKS / CURRICULUM ───── */
+.how-it-works {
+  padding: 100px 0;
+  background: #FAFAFA;
+}
+.how-it-works .section-title { text-align: center; }
+.how-it-works .section-label { display: block; text-align: center; }
+.how-subtitle {
+  text-align: center;
+  color: #555;
+  font-size: 1.05rem;
+  max-width: 650px;
+  margin: -8px auto 50px;
+  line-height: 1.6;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+.step-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  transition: all .3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.step-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--maroon), var(--gold));
+  transform: scaleX(0);
+  transition: transform .3s;
+}
+.step-card:hover::before { transform: scaleX(1); }
+.step-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+.step-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.step-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+.step-card p {
+  font-size: .88rem;
+  color: #555;
+  line-height: 1.6;
+}
+.learn-more-hint {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--maroon);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.step-card:hover .learn-more-hint { opacity: 1; }
+
+/* ───── SPONSORSHIP ───── */
+.sponsorship {
+  padding: 100px 0;
+  background: var(--white);
+}
+.sponsorship .section-label { display: block; text-align: center; }
+.sponsorship .section-title { text-align: center; }
+.sponsor-subtitle {
+  text-align: center;
+  color: #555;
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: -8px auto 50px;
+  line-height: 1.6;
+}
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sponsor-card {
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+  border: 2px solid var(--silver);
+  transition: all .3s ease;
+  position: relative;
+}
+.sponsor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+}
+.sponsor-card.featured {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(250,204,8,.05), rgba(172,22,29,.03));
+}
+.sponsor-card.featured::after {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 16px;
+  border-radius: 20px;
+}
+.sponsor-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--black);
+}
+.sponsor-price {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--maroon);
+  margin-bottom: 20px;
+}
+.sponsor-card ul {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 24px;
+}
+.sponsor-card ul li {
+  font-size: .9rem;
+  color: #444;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+.sponsor-card ul li::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* ───── STUDENT SPOTLIGHT ───── */
+.student-spotlight {
+  padding: 100px 0;
+  background: linear-gradient(180deg, #111 0%, var(--black) 100%);
+  color: var(--white);
+  overflow: hidden;
+}
+.student-spotlight .section-label { color: var(--gold); display: block; text-align: center; }
+.student-spotlight .section-title { text-align: center; color: var(--white); }
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 50px;
+}
+.spotlight-video-wrapper {
+  position: relative;
+  width: 320px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 3px rgba(250,204,8,.3);
+}
+.spotlight-video-wrapper video {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+}
+.spotlight-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.35);
+  cursor: pointer;
+  transition: background .3s;
+  border-radius: 20px;
+  z-index: 2;
+}
+.spotlight-play-overlay:hover { background: rgba(0,0,0,.2); }
+.spotlight-play-overlay.hidden { display: none; }
+.spotlight-play-btn {
+  width: 72px; height: 72px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(250,204,8,.4);
+  transition: transform .3s;
+}
+.spotlight-play-overlay:hover .spotlight-play-btn { transform: scale(1.1); }
+.spotlight-play-btn svg { width: 30px; height: 30px; fill: var(--black); margin-left: 4px; }
+.spotlight-text h3 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+.spotlight-text h3 em {
+  font-style: normal;
+  color: var(--gold);
+}
+.spotlight-text p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--silver);
+  margin-bottom: 16px;
+}
+.spotlight-pullquote {
+  background: rgba(255,255,255,.06);
+  border-left: 4px solid var(--gold);
+  padding: 20px 24px;
+  margin: 24px 0;
+  border-radius: 0 12px 12px 0;
+  font-size: 1.15rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--white);
+}
+.spotlight-pullquote span { color: var(--gold); }
+.spotlight-attribution {
+  font-size: .85rem;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--silver);
+  display: block;
+  margin-top: 8px;
+}
+.spotlight-grid.reversed {
+  grid-template-columns: 1fr auto;
+}
+@media (max-width: 900px) {
+  .spotlight-grid,
+  .spotlight-grid.reversed {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .spotlight-video-wrapper { width: 280px; }
+  .spotlight-pullquote { text-align: left; }
+  .spotlight-grid.reversed .spotlight-video-wrapper { order: -1; }
+}
+
+/* ───── HIGHLIGHTS GALLERY ───── */
+.highlights {
+  padding: 100px 0;
+  background: var(--black);
+  color: var(--white);
+}
+.highlights .section-label { color: var(--gold); display: block; text-align: center; }
+.highlights .section-title { text-align: center; color: var(--white); }
+.highlights-subtitle {
+  text-align: center;
+  color: var(--silver);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease;
+}
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.5) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.gallery-item:hover::after { opacity: 1; }
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(1) img { aspect-ratio: 1/1; }
+.gallery-item:nth-child(n+2) img { aspect-ratio: 4/3; }
+
+/* ───── QUOTE ───── */
+.impact {
+  padding: 100px 0;
+  background: var(--white);
+  text-align: center;
+}
+.impact-quote {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.45;
+  max-width: 780px;
+  margin: 0 auto 24px;
+  color: var(--black);
+}
+.impact-quote span { color: var(--maroon); }
+.impact-attribution {
+  font-size: .95rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* ───── WHERE FUNDS GO ───── */
+.funds {
+  padding: 80px 0;
+  background: #FAFAFA;
+}
+.funds .section-label { display: block; text-align: center; }
+.funds .section-title { text-align: center; }
+.funds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+.fund-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,.05);
+}
+.fund-icon {
+  width: 56px; height: 56px;
+  background: var(--gold);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+}
+.fund-icon svg { width: 28px; height: 28px; stroke: var(--black); fill: none; }
+.fund-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.fund-card p { font-size: .9rem; color: #555; line-height: 1.6; }
+
+/* ───── FINAL CTA ───── */
+.final-cta {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--maroon) 0%, #7a1015 100%);
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 500px; height: 500px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: .06;
+}
+.final-cta h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  margin-bottom: 16px;
+  position: relative;
+}
+.final-cta p {
+  font-size: 1.1rem;
+  opacity: .9;
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+.final-cta-details {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.final-cta-detail {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: .95rem;
+  opacity: .9;
+}
+.final-cta-detail strong {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+/* ───── FOOTER ───── */
+footer {
+  background: var(--black);
+  color: var(--silver);
+  padding: 40px 0;
+  text-align: center;
+  font-size: .85rem;
+}
+footer a { color: var(--gold); text-decoration: none; }
+footer .footer-contact { margin-top: 10px; font-size: .82rem; }
+
+/* ───── MODAL ───── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn .3s ease;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: var(--white);
+  border-radius: 20px;
+  max-width: 660px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp .4s ease;
+}
+.modal-header-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+.modal-body { padding: 36px; }
+.modal-body h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: var(--black);
+}
+.modal-body h3 {
+  font-size: 1.1rem;
+  margin: 20px 0 10px;
+  color: var(--maroon);
+}
+.modal-body p {
+  font-size: .95rem;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 14px;
+}
+.modal-body ul {
+  margin: 14px 0 14px 20px;
+  color: #444;
+  line-height: 1.8;
+  font-size: .95rem;
+}
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 38px; height: 38px;
+  background: rgba(0,0,0,.6);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .3s;
+  z-index: 10;
+}
+.modal-close:hover { background: var(--maroon); }
+.modal-close svg { width: 18px; height: 18px; stroke: #fff; }
+.modal-cta { margin-top: 24px; text-align: center; }
+.modal-quote {
+  background: #f8f8f8;
+  border-left: 4px solid var(--gold);
+  padding: 16px 20px;
+  margin: 18px 0;
+  font-style: italic;
+  border-radius: 0 8px 8px 0;
+}
+
+/* ───── LIGHTBOX ───── */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  cursor: zoom-out;
+}
+.lightbox-overlay.active { display: flex; }
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* ───── ANIMATIONS ───── */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ───── RESPONSIVE ───── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; left: 0; width: 100%;
+    background: rgba(0,0,0,.95);
+    padding: 20px 24px;
+    gap: 16px;
+  }
+  .event-grid,
+  .about-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .sponsor-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .gallery-item:nth-child(1) img { aspect-ratio: 16/9; }
+  .stat-row { gap: 20px; }
+  .hero-logo { width: 200px; }
+  .funds-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .ticket-includes { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item:nth-child(1) { grid-column: span 1; }
+  .stat-row { flex-wrap: wrap; justify-content: center; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .final-cta-details { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840686/incubatoredu-at-bhs-logo_udz7pr.png" alt="INCubator@BHS">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#event">Event Details</a>
+      <a href="#about">About</a>
+      <a href="#how">Curriculum</a>
+      <a href="#sponsorship">Sponsor</a>
+      <a href="https://ezregister.com/events/42998/" target="_blank" class="nav-cta">Register — $50</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://player.vimeo.com/progressive_redirect/playback/1164109919/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&log_user=0&signature=27180b9c3ee1781984ed7feb02f186e5aee3e16286c8ce025be7afc6c70b232f" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840686/incubatoredu-at-bhs-logo_udz7pr.png" alt="INCubator@BHS Logo" class="hero-logo">
+    <p class="hero-tagline">Networking Fundraiser &bull; March 22, 2026</p>
+    <h1 class="hero-headline">Where Students Don't Study Business<br>&mdash; They <em>Do</em> Business</h1>
+    <p class="hero-sub">Join local business owners and professionals for a one-of-a-kind evening at Penrose Brewing. Network, enjoy craft beer, and fuel the next generation of entrepreneurs at Batavia High School.</p>
+    <div class="hero-buttons">
+      <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-gold">Register Now — $50</a>
+      <button class="btn btn-outline" onclick="openModal('about-modal')">What is INCubator?</button>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ═══════ EVENT DETAILS ═══════ -->
+<section class="event-details" id="event">
+  <div class="container">
+    <div class="event-grid">
+      <div class="event-info reveal">
+        <span class="section-label" style="color:var(--gold)">Mark Your Calendar</span>
+        <h2>A Night of Innovation,<br>Networking &amp; <span class="gold-accent">Craft Beer</span></h2>
+        <p style="color:var(--silver);line-height:1.7;margin-bottom:8px;">The Batavia High School INCubator Entrepreneurship program is raising funds for its end-of-year <strong style="color:#fff">Pitch Night</strong>, product development for students, and classroom upgrades. All funds raised will directly support the BHS INCubator program through the Batavia Foundation for Educational Excellence (BFEE).</p>
+
+        <div class="detail-cards">
+          <div class="detail-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <h4>Date &amp; Time</h4>
+              <p>Sunday, March 22, 2026 &bull; 6:00 &ndash; 8:00 PM</p>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Location</h4>
+              <p>Penrose Brewing Company<br>509 Stevens St., Geneva, IL</p>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <div>
+              <h4>Admission</h4>
+              <p>$50 per person &mdash; includes food, two beverages, souvenir Penrose glass &amp; brewery tour</p>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <h4>This Year</h4>
+              <p>11 student teams competing for your donation dollars at MVP &amp; Pitch Night events</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-gold">Secure Your Spot</a>
+      </div>
+
+      <div class="venue-card reveal" style="padding:0;overflow:hidden;">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770845554/penrose-brewery-2-girls_lhtgxw.jpg" alt="Penrose Brewing Company" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+        <div style="padding:28px 32px;">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770845938/penrose-logo-on-black-wide_mlx2uq.png" alt="Penrose Brewing logo" class="venue-logo" style="margin-top:0;">
+        <h3>Hosted at Penrose Brewing</h3>
+        <p>An award-winning craft brewery in the heart of Geneva, IL — the perfect atmosphere for innovation and community.</p>
+
+        <div style="text-align:left;margin-bottom:24px;">
+          <p style="color:var(--gold);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;text-align:center;">Your $50 Ticket Includes</p>
+          <div class="ticket-includes">
+            <div class="ticket-item">
+              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Food &amp; appetizers</span>
+            </div>
+            <div class="ticket-item">
+              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Two craft beverages</span>
+            </div>
+            <div class="ticket-item">
+              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Souvenir Penrose glass</span>
+            </div>
+            <div class="ticket-item">
+              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Brewery tour</span>
+            </div>
+            <div class="ticket-item">
+              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Business networking</span>
+            </div>
+            <div class="ticket-item">
+              <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Pitch Night preview</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-outline" style="font-size:.85rem;padding:12px 28px;" onclick="openModal('venue-modal')">More About the Venue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrapper reveal">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840835/incubator-students-and_mentor-classroom_tgqaxb.jpg" alt="INCubator students with mentor in classroom">
+      </div>
+      <div class="about-text reveal">
+        <span class="section-label">About the Program</span>
+        <h2 class="section-title">Real Startups. Real Mentors.<br><span class="maroon-accent">Real Funding.</span></h2>
+        <p>INCubator@BHS is a nationally recognized entrepreneurship program at Batavia High School, part of the <strong>Uncharted Learning</strong> network of approximately 90 schools. Students form actual startups, develop real products, build business plans using the Lean Startup methodology, and pitch to panels of industry judges — all within a single school year.</p>
+        <p>What sets this apart: a community-driven model where volunteer mentors, coaches, and business resources from the Batavia area provide authentic professional guidance. Students aren't studying business — they're <em>doing</em> business.</p>
+
+        <div class="stat-row">
+          <div class="stat" onclick="openModal('program-modal')">
+            <div class="stat-number">90+</div>
+            <div class="stat-label">Schools Nationwide</div>
+          </div>
+          <div class="stat" onclick="openModal('program-modal')">
+            <div class="stat-number">11</div>
+            <div class="stat-label">Teams This Year</div>
+          </div>
+          <div class="stat" onclick="openModal('mentor-modal')">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Volunteer Tiers</div>
+          </div>
+          <div class="stat" onclick="openModal('ventures-modal')">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Curriculum Units</div>
+          </div>
+        </div>
+        <button class="btn btn-maroon" onclick="openModal('program-modal')">Deep Dive: The Program</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HOW IT WORKS / CURRICULUM ═══════ -->
+<section class="how-it-works" id="how">
+  <div class="container">
+    <span class="section-label">The Eight-Module Lean Startup Journey</span>
+    <h2 class="section-title">From Idea to <span class="maroon-accent">Pitch-Ready Business</span></h2>
+    <p class="how-subtitle">Students progress through eight rigorous units designed to mirror the actual experience of entrepreneurs — where speed, adaptability, and real market feedback matter more than rigid planning.</p>
+    <div class="steps-grid">
+      <div class="step-card reveal" onclick="openModal('ideate-modal')">
+        <div class="step-number">01</div>
+        <h3>Ideation</h3>
+        <p>Competitive analysis, value propositions, and identifying real pain points in the market.</p>
+        <span class="learn-more-hint">Click to learn more</span>
+      </div>
+      <div class="step-card reveal" onclick="openModal('discovery-modal')">
+        <div class="step-number">02</div>
+        <h3>Customer Discovery</h3>
+        <p>Primary research to understand target markets and validate that the identified problem truly exists.</p>
+        <span class="learn-more-hint">Click to learn more</span>
+      </div>
+      <div class="step-card reveal" onclick="openModal('connections-modal')">
+        <div class="step-number">03</div>
+        <h3>Customer Connections</h3>
+        <p>Positioning, marketing channels, and determining how to reach their audience effectively.</p>
+        <span class="learn-more-hint">Click to learn more</span>
+      </div>
+      <div class="step-card reveal" onclick="openModal('financial-modal')">
+        <div class="step-number">04</div>
+        <h3>Financial Modeling</h3>
+        <p>Foundational finance — estimating costs, setting pricing, and building models to determine viability.</p>
+        <span class="learn-more-hint">Click to learn more</span>
+      </div>
+      <div class="step-card reveal" onclick="openModal('mvp-modal')">
+        <div class="step-number">05</div>
+        <h3>MVP Construction</h3>
+        <p>Building a testable Minimum Viable Product with just enough features to satisfy early customers.</p>
+        <span class="learn-more-hint">Click to learn more</span>
+      </div>
+      <div class="step-card reveal" onclick="openModal('validation-modal')">
+        <div class="step-number">06</div>
+        <h3>Validation</h3>
+        <p>Rigorous experimentation — testing all elements. Teams pivot or persevere based on real data.</p>
+        <span class="learn-more-hint">Click to learn more</span>
+      </div>
+      <div class="step-card reveal" onclick="openModal('promo-modal')">
+        <div class="step-number">07</div>
+        <h3>Promotion &amp; Sales</h3>
+        <p>Go-to-market strategy, developing detailed plans for acquiring their first paying customers.</p>
+        <span class="learn-more-hint">Click to learn more</span>
+      </div>
+      <div class="step-card reveal" onclick="openModal('pitch-modal')">
+        <div class="step-number">08</div>
+        <h3>Pitch Prep</h3>
+        <p>Synthesizing a year of work into a professional presentation for potential investors.</p>
+        <span class="learn-more-hint">Click to learn more</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ QUOTE ═══════ -->
+<section class="impact reveal">
+  <div class="container">
+    <span class="section-label">From the Director</span>
+    <p class="impact-quote">&ldquo;The INCubator@BHS program offers BHS students an <span>authentic entrepreneurship experience</span>. Students are able to develop, test, and modify their own product or service under the mentoring of experienced industry professionals.&rdquo;</p>
+    <p class="impact-attribution">&mdash; Brian Gamlin, Director, INCubatoredu@BHS</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn btn-maroon" onclick="openModal('ventures-modal')">See Past Student Ventures</button>
+      <button class="btn btn-outline-dark" onclick="openModal('mentor-modal')">How Mentors Help</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ STUDENT SPOTLIGHT ═══════ -->
+<section class="student-spotlight" id="spotlight">
+  <div class="container">
+    <span class="section-label">Student Spotlight</span>
+    <h2 class="section-title" style="color:#fff">Hear It From <span class="gold-accent">the Students</span></h2>
+    <div class="spotlight-grid reveal">
+      <div class="spotlight-video-wrapper">
+        <video id="spotlightVideo" preload="metadata" playsinline poster="">
+          <source src="https://player.vimeo.com/progressive_redirect/playback/941430290/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&log_user=0&signature=a493a9f3c6c827a3d64a19198a31bf1d56b357021b46ff836170809a54c01d11" type="video/mp4">
+        </video>
+        <div class="spotlight-play-overlay" id="spotlightPlayOverlay" onclick="playSpotlight()">
+          <div class="spotlight-play-btn">
+            <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="spotlight-text">
+        <h3>Meet Micah — filmed live at<br>last year's <em>Penrose event</em></h3>
+        <p>We caught up with INCubator student Micah at the 2025 Penrose Brewing fundraiser. His take on what he's learned in the program says everything about why this experience matters.</p>
+        <div class="spotlight-pullquote">
+          &ldquo;The most interesting thing I've learned being in this program is how much <span>community, connections, and AI</span> can impact a business. Making connections is so important in the business world — connections take you a long way.&rdquo;
+          <span class="spotlight-attribution">&mdash; Micah, INCubator@BHS Student</span>
+        </div>
+        <p>Asked if his generation is going to take over the world, Micah didn't hesitate:</p>
+        <div class="spotlight-pullquote">
+          &ldquo;Absolutely. Because we're <span>young, we're creative, and we're energetic</span>.&rdquo;
+        </div>
+        <p style="margin-top:24px;">This is what your $50 ticket supports — students like Micah who are building real skills, real connections, and real confidence.</p>
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-gold" style="margin-top:8px;">Register &amp; Meet This Year's Students</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ STUDENT SPOTLIGHT: FOREVER FAITHFUL ═══════ -->
+<section class="student-spotlight" id="spotlight-ff" style="background:linear-gradient(180deg, var(--black) 0%, #111 100%);">
+  <div class="container">
+    <span class="section-label">Pitch Night Winners</span>
+    <h2 class="section-title" style="color:#fff">From Wristbands to <span class="gold-accent">First Place</span></h2>
+    <div class="spotlight-grid reversed reveal">
+      <div class="spotlight-text">
+        <h3>Forever Faithful — <em>first place</em><br>out of 14 teams</h3>
+        <p>A Christian clothing brand born in the INCubator classroom. What started with black wristbands grew into t-shirts, hoodies, and a rainbow of accessories — each carrying a message of faith. They took the top award at Pitch Night.</p>
+        <div class="spotlight-pullquote">
+          &ldquo;We really want to give anybody an easy way to <span>express their faith and start conversation about it</span> — to spread the gospel and let others receive the gift that we have received.&rdquo;
+          <span class="spotlight-attribution">&mdash; Forever Faithful Team</span>
+        </div>
+        <p>This is what INCubator makes possible — students turning personal passion into a real business.</p>
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-gold" style="margin-top:8px;">Register &amp; See This Year's Teams</a>
+      </div>
+      <div class="spotlight-video-wrapper">
+        <video id="spotlightVideoFF" preload="metadata" playsinline>
+          <source src="https://player.vimeo.com/progressive_redirect/playback/941440841/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&log_user=0&signature=317a0fa574d119c1943b031294009aaba5fed1acd1beaa0dc7fa4dfa282ff057" type="video/mp4">
+        </video>
+        <div class="spotlight-play-overlay" id="spotlightPlayOverlayFF" onclick="playSpotlightFF()">
+          <div class="spotlight-play-btn">
+            <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ STUDENT SPOTLIGHT: TYSON ═══════ -->
+<section class="student-spotlight" id="spotlight-tyson" style="background:linear-gradient(180deg, #0a0a0a 0%, #111 100%);">
+  <div class="container">
+    <span class="section-label">Beyond the Classroom</span>
+    <h2 class="section-title" style="color:#fff">Purpose-Driven <span class="gold-accent">Learning in Action</span></h2>
+    <div class="spotlight-grid reveal">
+      <div class="spotlight-video-wrapper">
+        <video id="spotlightVideoTyson" preload="metadata" playsinline>
+          <source src="https://player.vimeo.com/progressive_redirect/playback/941447328/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&log_user=0&signature=78a16fd2e73cb393951233c0b9ef049bae64f367d1cd7abdd37588f264f1560b" type="video/mp4">
+        </video>
+        <div class="spotlight-play-overlay" id="spotlightPlayOverlayTyson" onclick="playSpotlightTyson()">
+          <div class="spotlight-play-btn">
+            <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="spotlight-text">
+        <h3>Meet Tyson — athlete, entrepreneur,<br>and <em>community storyteller</em></h3>
+        <p>Tyson is headed to Indiana University Indianapolis to play Division I soccer and major in business. But his INCubator venture wasn't about sports — it was about people.</p>
+        <div class="spotlight-pullquote">
+          &ldquo;We got a group of students with similar passions and went around to <span>retirement homes in the area and interviewed the residents for some of their stories</span>. It was a really awesome experience.&rdquo;
+          <span class="spotlight-attribution">&mdash; Tyson, INCubator@BHS Student</span>
+        </div>
+        <p>That's the power of INCubator — a D1 athlete choosing to spend his time connecting generations and preserving stories. Every student finds their own path.</p>
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-gold" style="margin-top:8px;">Register &amp; Support Students Like Tyson</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HIGHLIGHTS ═══════ -->
+<section class="highlights" id="highlights">
+  <div class="container">
+    <span class="section-label">Past Events</span>
+    <h2 class="section-title" style="color:#fff">Moments That <span class="gold-accent">Matter</span></h2>
+    <p class="highlights-subtitle">From the stage to the check presentations, every moment captures the energy and growth of our student entrepreneurs. This is what your support makes possible.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840219/incubator-all-teams-stage_lo1xek.jpg" alt="All teams on stage" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840220/incubator-untold-check_ofitmd.jpg" alt="Untold check presentation" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840220/incubator-switchcase-check-stage_hi1u6v.jpg" alt="SwitchCase check on stage" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840219/incubator-stage_qvor6f.jpg" alt="INCubator stage" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840218/incubator-judges-stage_ajozxk.jpg" alt="Judges on stage" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840220/incubator-social-sparks-hallway-check_hwdqec.jpg" alt="Social Sparks check" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840219/incubator-nerva-check-stage_yncl8u.jpg" alt="Nerva check on stage" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770898694/dennis-piron-bob-hubard-hubard-award_j9xzh9.jpg" alt="Dennis Piron and Bob Hubard award" loading="lazy" style="object-position:center top;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ WHERE FUNDS GO ═══════ -->
+<section class="funds" id="funds">
+  <div class="container">
+    <span class="section-label">Your Impact</span>
+    <h2 class="section-title">Where Every Dollar <span class="maroon-accent">Goes</span></h2>
+    <div class="funds-grid reveal">
+      <div class="fund-card">
+        <div class="fund-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <h3>Pitch Night</h3>
+        <p>The "Shark Tank" style culminating event at the Batavia Fine Arts Centre where student teams compete for seed funding from a panel of industry judges.</p>
+      </div>
+      <div class="fund-card">
+        <div class="fund-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h3>Product Development</h3>
+        <p>Funds go directly to students to help them build MVPs — reducing the personal financial barrier to entrepreneurship and enabling real prototypes.</p>
+      </div>
+      <div class="fund-card">
+        <div class="fund-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Classroom Upgrades</h3>
+        <p>Technology, collaboration stations, flexible furniture, and high-speed data — creating a space that feels more like a modern business incubator than a classroom.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SPONSORSHIP ═══════ -->
+<section class="sponsorship" id="sponsorship">
+  <div class="container">
+    <span class="section-label">Become a Sponsor</span>
+    <h2 class="section-title">Can't Make It? <span class="maroon-accent">You Can Still Make a Difference</span></h2>
+    <p class="sponsor-subtitle">All INCubator@BHS sponsors are recognized at the March 22nd Networking Event, the end-of-year Pitch Night, and on INCubator@BHS social media. Logo deadline: March 16th.</p>
+    <div class="sponsor-grid reveal">
+      <div class="sponsor-card">
+        <h3>Team Sponsor</h3>
+        <div class="sponsor-price">$200</div>
+        <ul>
+          <li>2 entry tickets to the networking event</li>
+          <li>Recognition as a Team Sponsor at both events</li>
+          <li>Direct connection to a specific student entrepreneurial team</li>
+        </ul>
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-outline-dark" style="font-size:.85rem;padding:12px 28px;width:100%;">Sponsor a Team</a>
+      </div>
+      <div class="sponsor-card featured">
+        <h3>Event Sponsor</h3>
+        <div class="sponsor-price">$500</div>
+        <ul>
+          <li>4 entry tickets to the networking event</li>
+          <li>Recognition as an Event Sponsor at both events</li>
+          <li>Logo on event signage and posters</li>
+          <li>Social media mentions throughout the event cycle</li>
+        </ul>
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-maroon" style="font-size:.85rem;padding:12px 28px;width:100%;">Become Event Sponsor</a>
+      </div>
+      <div class="sponsor-card">
+        <h3>Lead Sponsor</h3>
+        <div class="sponsor-price">$1,000</div>
+        <ul>
+          <li>6 entry tickets to the networking event</li>
+          <li>Recognition as a Lead Program Sponsor at both events</li>
+          <li>Special Pitch Night recognition and reserved seating</li>
+          <li>Premium logo placement on all materials</li>
+        </ul>
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-outline-dark" style="font-size:.85rem;padding:12px 28px;width:100%;">Lead Sponsor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FINAL CTA ═══════ -->
+<section class="final-cta">
+  <div class="container reveal">
+    <h2>Be Part of Something <span class="gold-accent">Bigger</span></h2>
+    <p>Your presence and support directly impact the next generation of entrepreneurs. Every registration and every sponsorship helps student teams turn ideas into reality.</p>
+    <div class="final-cta-details">
+      <div class="final-cta-detail">
+        <strong>March 22, 2026</strong>
+        Sunday, 6 &ndash; 8 PM
+      </div>
+      <div class="final-cta-detail">
+        <strong>Penrose Brewing</strong>
+        509 Stevens St., Geneva
+      </div>
+      <div class="final-cta-detail">
+        <strong>$50 / Person</strong>
+        Food, drinks &amp; more
+      </div>
+    </div>
+    <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-gold" style="font-size:1.15rem;padding:18px 52px;">Register for the Event</a>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container">
+    <p>&copy; 2026 INCubator@BHS &bull; Batavia High School &bull; <a href="https://ezregister.com/events/42998/" target="_blank">Register for the Fundraiser</a></p>
+    <p class="footer-contact">Questions? Contact Dennis Piron &bull; <a href="mailto:Dennis.Piron@bps101.net">Dennis.Piron@bps101.net</a> &bull; Follow <a href="#" onclick="return false;">@INCubatorBHS</a></p>
+  </div>
+</footer>
+
+<!-- ═══════ LIGHTBOX ═══════ -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="Enlarged photo">
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- ═══════       MODALS       ═══════ -->
+<!-- ═══════════════════════════════════ -->
+
+<!-- ABOUT MODAL -->
+<div class="modal-overlay" id="about-modal" onclick="closeModalOutside(event, 'about-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('about-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840835/incubator-students-and_mentor-classroom_tgqaxb.jpg" alt="Students in classroom">
+    <div class="modal-body">
+      <h2>What is INCubator@BHS?</h2>
+      <p>The INCubator Entrepreneurship program at Batavia High School is a flagship Career-Technical Education (CTE) initiative that bridges the traditional divide between classroom instruction and the practical demands of the global marketplace.</p>
+      <p>Part of the nationally recognized <strong>Uncharted Learning</strong> network of approximately 90 schools, INCubator@BHS is centered on "Purpose-Driven Learning" — the idea that deeper cognitive engagement occurs when students are passionate about the problems they are solving.</p>
+      <p>The program is specifically tailored for sophomores, juniors, and seniors, functioning as a high-stakes elective that also satisfies the state-mandated Consumer Education requirement for graduation. This means it's a core component of a student's academic progression — not a fringe extracurricular activity.</p>
+      <div class="modal-quote">
+        &ldquo;The INCubator@BHS program offers BHS students an authentic entrepreneurship experience. Students are able to develop, test, and modify their own product or service under the mentoring of experienced industry professionals.&rdquo;<br><strong>&mdash; Brian Gamlin, Director</strong>
+      </div>
+      <h3>What Makes It Different</h3>
+      <ul>
+        <li>Students create <strong>real companies</strong> — not simulations or theoretical exercises</li>
+        <li>An <strong>eight-module Lean Startup curriculum</strong> updated annually by Uncharted Learning with input from industry professionals</li>
+        <li>Community volunteers serve as <strong>mentors, coaches, and business resources</strong></li>
+        <li>Culminates in a <strong>"Shark Tank" style Pitch Night</strong> at the Batavia Fine Arts Centre with real seed funding awards</li>
+        <li>Managed financially through the <strong>Batavia Foundation for Educational Excellence (BFEE)</strong>, a non-profit established in 1985</li>
+      </ul>
+      <div class="modal-cta">
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-maroon">Register for the Event</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAM DEEP DIVE MODAL -->
+<div class="modal-overlay" id="program-modal" onclick="closeModalOutside(event, 'program-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('program-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840219/incubator-all-teams-stage_lo1xek.jpg" alt="All teams on stage">
+    <div class="modal-body">
+      <h2>The INCubator Program &amp; Uncharted Learning</h2>
+      <p>Batavia High School's adoption of this model was heavily influenced by the success of the inaugural INCubatoredu program at Barrington High School in 2013. By observing the impact of real-world learning and community-school partnerships, BHS leadership recognized the potential to fill critical gaps in traditional vocational training.</p>
+
+      <h3>Part of a National Network</h3>
+      <p>INCubator@BHS is a member of a national network of approximately <strong>90 schools</strong> utilizing the Uncharted Learning curriculum. Uncharted Learning, a not-for-profit educational organization, provides comprehensive curriculum, teacher training, and ongoing support services. The curriculum is "evergreen" — updated annually with input from industry professionals to ensure it reflects current market trends and technological advancements.</p>
+
+      <h3>The Eight-Unit Lean Startup Journey</h3>
+      <p>The core of the program is a two-semester sequence that leads student teams through the entire lifecycle of a startup using the Lean Startup process:</p>
+      <ul>
+        <li><strong>Unit 1 — Ideation:</strong> Competitive analysis, value propositions, identifying market pain points</li>
+        <li><strong>Unit 2 — Customer Discovery:</strong> Primary research to understand and validate the target market</li>
+        <li><strong>Unit 3 — Customer Connections:</strong> Positioning, marketing channels, customer relationship management</li>
+        <li><strong>Unit 4 — Financial Modeling:</strong> Costs, pricing, contribution margin, break-even analysis</li>
+        <li><strong>Unit 5 — MVP Construction:</strong> Building a testable Minimum Viable Product</li>
+        <li><strong>Unit 6 — Validation:</strong> Rigorous experimentation; teams pivot or persevere based on data</li>
+        <li><strong>Unit 7 — Promotion &amp; Sales:</strong> Market entry and acquiring first paying customers</li>
+        <li><strong>Unit 8 — Pitch Prep:</strong> Synthesizing the year into a professional investor presentation</li>
+      </ul>
+
+      <h3>Year Two: ACCELeratoredu</h3>
+      <p>For students whose businesses gained traction, the <strong>ACCELeratoredu</strong> second-year course transitions from a startup simulation into a real-life accelerator — focusing on company formation, legal entities, customer acquisition, and production processes. This demonstrates that INCubator is not a one-year novelty but a sustainable entrepreneurial support system.</p>
+
+      <div class="modal-cta">
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-maroon">Support the Program</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENTOR MODAL -->
+<div class="modal-overlay" id="mentor-modal" onclick="closeModalOutside(event, 'mentor-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('mentor-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840835/incubator-students-and_mentor-classroom_tgqaxb.jpg" alt="Mentors and students">
+    <div class="modal-body">
+      <h2>The Community-Driven Instructional Model</h2>
+      <p>A distinctive feature of the BHS INCubator program is its departure from the siloed, single-teacher classroom. While the classroom teacher provides continuity and manages administrative aspects, a significant portion of the instruction is delivered by community volunteers. This creates a bridge between the school and the local economy.</p>
+
+      <h3>Three Tiers of Volunteer Engagement</h3>
+      <p>The program utilizes a three-tiered system for community involvement, allowing local professionals to engage at a level that fits their expertise and availability:</p>
+      <ul>
+        <li><strong>Mentors:</strong> The most deeply involved — assigned to one specific team for the entire academic year. They provide weekly feedback and encouragement, meeting with students during class or via video calls to guide them through the Lean Startup process. The mentor-student relationship is central to the program's success.</li>
+        <li><strong>Coaches:</strong> Subject matter experts who enter the classroom for a limited duration (one to five days) to provide intensive instruction on a specific area — such as business law, marketing, or finance. They collaborate with the classroom teacher to ensure real-world context aligns with academic requirements.</li>
+        <li><strong>Business Resources:</strong> As-needed volunteers who serve as judges for preliminary pitch competitions, host on-site student visits at their places of business, or participate in the BHS career fair.</li>
+      </ul>
+      <p>This volunteer structure is not merely a cost-saving measure; it is a pedagogical strategy designed to foster "lifelong learning" and community collaboration. By involving local entrepreneurs, students are held to professional standards and receive feedback grounded in the current realities of the Batavia business landscape.</p>
+
+      <div class="modal-quote">
+        &ldquo;The energy in the classroom is contagious — students learning from one another in a way that is the ultimate goal for educators.&rdquo;<br><strong>&mdash; Karen Roberts, Buffalo Grove High School, INCubatoredu member</strong>
+      </div>
+
+      <p><strong>Interested in mentoring?</strong> Attend the fundraiser event to learn how you can get involved and directly support a student team!</p>
+
+      <div class="modal-cta">
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-maroon">Attend &amp; Get Involved</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VENTURES MODAL -->
+<div class="modal-overlay" id="ventures-modal" onclick="closeModalOutside(event, 'ventures-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('ventures-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840220/incubator-switchcase-check-stage_hi1u6v.jpg" alt="Student venture on stage">
+    <div class="modal-body">
+      <h2>Past Student Ventures &amp; Awards</h2>
+      <p>The culminating "Shark Tank" style <strong>Pitch Night</strong> at the Batavia Fine Arts Centre is where student teams present their finalized business concepts to a panel of industry experts, competing for actual seed funding. These awards represent a significant transfer of community-raised capital directly into the hands of student entrepreneurs.</p>
+
+      <h3>Award-Winning Ventures</h3>
+      <ul>
+        <li><strong>Hyra Parking ($2,000):</strong> A website and mobile app solving high school parking shortages — students could rent spots to peers, with the company taking a portion of the sale. Demonstrated sophisticated understanding of scalability.</li>
+        <li><strong>West Exit ($1,800):</strong> An American-made clothing company modeled after brands like Supreme. Generated over $3,500 in revenue before Pitch Night, leveraging platforms like Reddit for sales.</li>
+        <li><strong>The Sunshine Seat ($1,700):</strong> A car seat equipped with a built-in thermometer and smartphone app to alert parents if a child was left in a hot car — exemplifying "purpose-driven learning" by addressing a serious safety issue.</li>
+        <li><strong>GeoFluence ($1,400):</strong> A social media advertising company connecting small businesses with influencers. Their door-to-door strategy demonstrated the "customer connection" skills taught in Unit 3.</li>
+        <li><strong>Osa Security ($1,000):</strong> An app to prevent sexual assault on college campuses, allowing users to group up with friends and share locations — a "friends helping friends" model of security.</li>
+      </ul>
+
+      <h3>Beyond Pitch Night</h3>
+      <p>The Batavia Chamber of Commerce provides <strong>"Inspire Scholarships"</strong> to graduating seniors who demonstrate entrepreneurial savvy. Recipients such as Lukas Giesen, who founded the power washing business GTS Solutions, exemplify how INCubator skills translate into actual business ownership — he established a viable business before even graduating high school.</p>
+
+      <div class="modal-cta">
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-maroon">Support the Next Cohort</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VENUE MODAL -->
+<div class="modal-overlay" id="venue-modal" onclick="closeModalOutside(event, 'venue-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('venue-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770845662/penrose-brewery-hero-1_puqfk6.webp" alt="Penrose Brewing Company">
+    <div class="modal-body">
+      <h2>Penrose Brewing Company</h2>
+      <p>Located at <strong>509 Stevens St., Geneva, IL 60134</strong>, Penrose Brewing Company is an award-winning craft brewery known for its Belgian-inspired beers and stunning taproom. The spacious venue provides the perfect backdrop for our fundraiser — an innovative space for innovative students.</p>
+
+      <h3>What's Included with Your $50 Ticket</h3>
+      <ul>
+        <li>Food and appetizers</li>
+        <li>Two complimentary craft beverages</li>
+        <li>A souvenir Penrose glass to take home</li>
+        <li>A guided tour of the Penrose Brewing facility</li>
+        <li>Networking opportunities with local business owners and professionals</li>
+        <li>A firsthand look at the INCubator@BHS program and details about the upcoming Pitch Night</li>
+      </ul>
+
+      <p>This event illustrates the program's ability to bring together the professional interests of the local business community while supporting student ventures. It's marketed as a "one-of-a-kind" opportunity to network with other business leaders while supporting the BHS INCubator program.</p>
+
+      <div class="modal-cta">
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-maroon">Register Now — $50</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IDEATE MODAL -->
+<div class="modal-overlay" id="ideate-modal" onclick="closeModalOutside(event, 'ideate-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('ideate-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840835/incubator-students-and_mentor-classroom_tgqaxb.jpg" alt="Students ideating">
+    <div class="modal-body">
+      <h2>Unit 1: Ideation</h2>
+      <p>The journey begins with problem discovery. Students conduct competitive analysis, develop a value proposition, and identify real pain points in the market. They brainstorm potential solutions and begin evaluating which ideas have the most promise.</p>
+      <p>This phase teaches students that great businesses start by deeply understanding the people they serve — not by falling in love with a solution too early. The emphasis is on finding problems worth solving.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DISCOVERY MODAL -->
+<div class="modal-overlay" id="discovery-modal" onclick="closeModalOutside(event, 'discovery-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('discovery-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840835/incubator-students-and_mentor-classroom_tgqaxb.jpg" alt="Customer discovery">
+    <div class="modal-body">
+      <h2>Unit 2: Customer Discovery</h2>
+      <p>Teams engage in primary research to understand their target market. This involves identifying potential customers, conducting interviews, and — most importantly — validating that the identified problem actually exists for real people.</p>
+      <p>Students learn to set aside their assumptions and listen. If the data shows the problem isn't significant, they pivot early rather than investing time in something nobody needs.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONNECTIONS MODAL -->
+<div class="modal-overlay" id="connections-modal" onclick="closeModalOutside(event, 'connections-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('connections-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840220/incubator-social-sparks-hallway-check_hwdqec.jpg" alt="Customer connections">
+    <div class="modal-body">
+      <h2>Unit 3: Customer Connections</h2>
+      <p>This unit focuses on positioning, marketing channels, and customer relationship management. Students determine how to reach their audience effectively — whether through social media, partnerships, events, or direct outreach.</p>
+      <p>A great example: the student venture <strong>GeoFluence</strong> used door-to-door outreach to connect local businesses with social media influencers, directly applying the "customer connection" skills from this unit.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FINANCIAL MODAL -->
+<div class="modal-overlay" id="financial-modal" onclick="closeModalOutside(event, 'financial-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('financial-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840219/incubator-stage_qvor6f.jpg" alt="Financial modeling">
+    <div class="modal-body">
+      <h2>Unit 4: Financial Modeling</h2>
+      <p>Students learn foundational finance and accounting principles. They estimate costs, set pricing, calculate contribution margins, determine break-even points, and build financial models to determine the viability of their ventures.</p>
+      <p>Understanding these variables is essential — when teams reach Pitch Night, they must be able to defend their financial projections to a panel of expert judges who evaluate the business not just as a school project, but as a potential investment.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MVP MODAL -->
+<div class="modal-overlay" id="mvp-modal" onclick="closeModalOutside(event, 'mvp-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('mvp-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840220/incubator-untold-check_ofitmd.jpg" alt="MVP construction">
+    <div class="modal-body">
+      <h2>Unit 5: MVP Construction</h2>
+      <p>This is where ideas become tangible. Teams develop a <strong>Minimum Viable Product (MVP)</strong> — a testable version of their product or service with just enough features to satisfy early customers and generate learning.</p>
+      <p>Fundraising proceeds directly support this phase by providing students with the resources to build real prototypes — reducing the personal financial barrier to entrepreneurship.</p>
+    </div>
+  </div>
+</div>
+
+<!-- VALIDATION MODAL -->
+<div class="modal-overlay" id="validation-modal" onclick="closeModalOutside(event, 'validation-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('validation-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840219/incubator-nerva-check-stage_yncl8u.jpg" alt="Validation">
+    <div class="modal-body">
+      <h2>Unit 6: Validation</h2>
+      <p>Rigorous experimentation and testing of all elements of the business plan. Students collect real data from their MVP and must decide whether to <strong>"pivot"</strong> (change direction) or <strong>"persevere"</strong> (double down) based on what they learn.</p>
+      <p>This is the heart of the Lean Startup methodology — and often the most transformative learning experience, as students discover that failure is not an endpoint but a data point.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROMO MODAL -->
+<div class="modal-overlay" id="promo-modal" onclick="closeModalOutside(event, 'promo-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('promo-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840220/incubator-switchcase-check-stage_hi1u6v.jpg" alt="Promotion and sales">
+    <div class="modal-body">
+      <h2>Unit 7: Promotion &amp; Sales</h2>
+      <p>Teams plan for market entry, developing detailed strategies for taking their product to market and acquiring their first paying customers. This is where business plans meet reality.</p>
+      <p>Some teams, like <strong>West Exit</strong>, generated over <strong>$3,500 in real revenue</strong> before Pitch Night — showcasing their ability to execute a marketing plan and leverage platforms like Reddit and social media for sales.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PITCH MODAL -->
+<div class="modal-overlay" id="pitch-modal" onclick="closeModalOutside(event, 'pitch-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('pitch-modal')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-header-img" src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840218/incubator-judges-stage_ajozxk.jpg" alt="Pitch competition">
+    <div class="modal-body">
+      <h2>Unit 8: Pitch Prep &amp; Pitch Night</h2>
+      <p>The culmination of the course. Students synthesize their entire year of work into a professional presentation for potential investors. They learn to craft compelling narratives, distill complex information, and present with confidence.</p>
+      <p>The <strong>"Shark Tank" style Pitch Night</strong> at the Batavia Fine Arts Centre is the public face of the INCubator program. Student teams present their finalized business concepts to a panel of industry experts, competing for actual funding to turn their plans into reality.</p>
+      <p>The event is described as "inspiring and exciting for all who attend," as it showcases the tangible results of the students' year-long journey and the community's investment.</p>
+
+      <div class="modal-quote">
+        This year, <strong>11 student teams</strong> will be competing for your donation dollars during our MVP and Pitch Night events. Your support at the March 22nd fundraiser directly funds the awards they'll be competing for.
+      </div>
+
+      <div class="modal-cta">
+        <a href="https://ezregister.com/events/42998/" target="_blank" class="btn btn-maroon">Register &amp; Support Pitch Night</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ JAVASCRIPT ═══════ -->
+<script>
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Mobile menu
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+mobileToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// Scroll reveal
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealElements.forEach(el => revealObserver.observe(el));
+
+// Modals
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e, id) {
+  if (e.target === e.currentTarget) closeModal(id);
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+    closeLightbox();
+    document.body.style.overflow = '';
+  }
+});
+
+// Spotlight video
+function playSpotlight() {
+  const video = document.getElementById('spotlightVideo');
+  const overlay = document.getElementById('spotlightPlayOverlay');
+  overlay.classList.add('hidden');
+  video.play();
+}
+document.getElementById('spotlightVideo').addEventListener('click', function() {
+  if (this.paused) {
+    this.play();
+    document.getElementById('spotlightPlayOverlay').classList.add('hidden');
+  } else {
+    this.pause();
+    document.getElementById('spotlightPlayOverlay').classList.remove('hidden');
+  }
+});
+document.getElementById('spotlightVideo').addEventListener('ended', function() {
+  document.getElementById('spotlightPlayOverlay').classList.remove('hidden');
+});
+
+// Spotlight video: Tyson
+function playSpotlightTyson() {
+  const video = document.getElementById('spotlightVideoTyson');
+  const overlay = document.getElementById('spotlightPlayOverlayTyson');
+  overlay.classList.add('hidden');
+  video.play();
+}
+document.getElementById('spotlightVideoTyson').addEventListener('click', function() {
+  if (this.paused) {
+    this.play();
+    document.getElementById('spotlightPlayOverlayTyson').classList.add('hidden');
+  } else {
+    this.pause();
+    document.getElementById('spotlightPlayOverlayTyson').classList.remove('hidden');
+  }
+});
+document.getElementById('spotlightVideoTyson').addEventListener('ended', function() {
+  document.getElementById('spotlightPlayOverlayTyson').classList.remove('hidden');
+});
+
+// Spotlight video: Forever Faithful
+function playSpotlightFF() {
+  const video = document.getElementById('spotlightVideoFF');
+  const overlay = document.getElementById('spotlightPlayOverlayFF');
+  overlay.classList.add('hidden');
+  video.play();
+}
+document.getElementById('spotlightVideoFF').addEventListener('click', function() {
+  if (this.paused) {
+    this.play();
+    document.getElementById('spotlightPlayOverlayFF').classList.add('hidden');
+  } else {
+    this.pause();
+    document.getElementById('spotlightPlayOverlayFF').classList.remove('hidden');
+  }
+});
+document.getElementById('spotlightVideoFF').addEventListener('ended', function() {
+  document.getElementById('spotlightPlayOverlayFF').classList.remove('hidden');
+});
+
+// Lightbox
+function openLightbox(el) {
+  document.getElementById('lightboxImg').src = el.querySelector('img').src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>
