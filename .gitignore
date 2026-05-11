@@ -1,0 +1,64 @@
+# =============================================================================
+# This repository is PUBLIC on GitHub. Be deliberate about what gets committed.
+# Always stage specific files (e.g. `git add piron-tribute-email.html`) rather
+# than `git add .`, and double-check `git status` before committing.
+# =============================================================================
+
+# macOS metadata files
+.DS_Store
+**/.DS_Store
+
+# -----------------------------------------------------------------------------
+# Sensitive working files — DO NOT publish to a public repo.
+# The assets/ folder contains the master email-list CSV, the student/team
+# contacts spreadsheet, and personal/reference photos that should never be
+# pushed to GitHub. Source images intended for emails live on Cloudinary.
+# -----------------------------------------------------------------------------
+assets/
+
+# -----------------------------------------------------------------------------
+# Large media (videos in particular). These bloat the repo and aren't needed
+# in source — host on Cloudinary / Vimeo / YouTube and reference by URL.
+# -----------------------------------------------------------------------------
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.HEIC
+*.heic
+
+# -----------------------------------------------------------------------------
+# AI image-generation working directory. Final assets live on Cloudinary;
+# the local PNGs are working files only.
+# -----------------------------------------------------------------------------
+generated_imgs/
+generated-images/
+
+# -----------------------------------------------------------------------------
+# Dev cruft and incidental files
+# -----------------------------------------------------------------------------
+screencapture-*.png
+screencapture-*.jpg
+Gemini_Generated_Image_*.png
+Gemini_Generated_Image_*.jpg
+
+# -----------------------------------------------------------------------------
+# Working-draft Office documents (commit final exports/PDFs intentionally if
+# you need them in the repo).
+# -----------------------------------------------------------------------------
+*.docx
+*.xlsx
+*.pptx
+~$*
+
+# -----------------------------------------------------------------------------
+# Tooling / editor artifacts
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+node_modules/
+.env
+.env.local
