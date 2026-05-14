@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dennis Piron Scholarship for Entrepreneurship — INCubator@BHS</title>
+<meta name="description" content="In recognition of Dennis Piron's 10 years leading the INCubator@BHS program, we're launching the Dennis Piron Scholarship for Entrepreneurship through the Batavia Foundation for Educational Excellence — a $1,000 annual award for a graduating senior. Help us launch it for the class of 2027.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://garyricke.github.io/bhsincubator/piron-scholarship.html">
+<meta property="og:title" content="The Dennis Piron Scholarship for Entrepreneurship">
+<meta property="og:description" content="Honoring 10 years of building entrepreneurs at Batavia High School. Help us launch a $1,000 annual scholarship for the class of 2027.">
+<meta property="og:site_name" content="INCubator@BHS">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ───── RESET & BASE ───── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; line-height: 1.15; }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ───── PALETTE ───── */
+:root {
+  --gold:   #FACC08;
+  --maroon: #AC161D;
+  --black:  #000000;
+  --ink:    #1a1a1a;
+  --muted:  #5b5b5b;
+  --silver: #D1D1D1;
+  --paper:  #f7f5f0;
+}
+
+/* ───── UTILITY ───── */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.eyebrow {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--maroon);
+  margin-bottom: 14px;
+}
+.eyebrow.on-dark { color: var(--gold); }
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 620px;
+  margin: 0 auto;
+}
+.btn {
+  display: inline-block;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+  border: 2px solid transparent;
+  letter-spacing: .5px;
+  text-align: center;
+}
+.btn-gold { background: var(--gold); color: var(--black); box-shadow: 0 6px 24px rgba(250,204,8,.4); }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(250,204,8,.55); }
+.btn-maroon { background: var(--maroon); color: #fff; box-shadow: 0 6px 24px rgba(172,22,29,.35); }
+.btn-maroon:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(172,22,29,.5); }
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+.btn-outline:hover { background: #fff; color: var(--black); border-color: #fff; }
+
+/* ───── NAV ───── */
+.navbar {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  padding: 14px 0;
+  transition: background .35s ease, padding .35s ease, box-shadow .35s ease;
+  background: transparent;
+}
+.navbar.scrolled {
+  background: rgba(0,0,0,.92);
+  backdrop-filter: blur(10px);
+  padding: 8px 0;
+  box-shadow: 0 2px 20px rgba(0,0,0,.3);
+}
+.nav-inner {
+  max-width: 1140px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  color: #fff; text-decoration: none; font-size: 1rem;
+  letter-spacing: .5px;
+}
+.nav-brand img { height: 38px; width: auto; }
+.nav-cta {
+  padding: 10px 22px; font-size: .9rem; border-radius: 50px;
+  background: var(--gold); color: var(--black);
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  text-decoration: none; transition: all .25s ease;
+  letter-spacing: .5px;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(250,204,8,.5); }
+
+/* ───── HERO ───── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  padding: 120px 24px 80px;
+}
+.hero-video {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 40%, rgba(0,0,0,.75) 100%);
+  z-index: 2;
+}
+.hero-content { position: relative; z-index: 3; max-width: 880px; }
+.hero h1 {
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 30px rgba(0,0,0,.5);
+}
+.hero h1 .accent { color: var(--gold); }
+.hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  margin: 0 auto 36px;
+  max-width: 680px;
+  color: #f1f1f1;
+  text-shadow: 0 2px 12px rgba(0,0,0,.5);
+}
+.hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero-eyebrow {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+/* ───── TRIBUTE SECTION ───── */
+.tributes {
+  padding: 100px 0 80px;
+  background: var(--black);
+  color: #e8e8e8;
+}
+.tributes .eyebrow { color: var(--gold); }
+.tributes .section-title { color: #fff; }
+.tributes-intro {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+.tributes-intro p {
+  font-size: 1.1rem;
+  color: #d8d8d8;
+  margin-bottom: 16px;
+}
+.tributes-intro p:last-child { margin-bottom: 0; }
+
+/* 9:16 video player */
+.video-player-wrap {
+  max-width: 420px;
+  margin: 0 auto;
+}
+.video-player-label {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.video-player-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 24px;
+  color: #fff;
+}
+.video-player {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(250,204,8,.18), 0 8px 28px rgba(0,0,0,.6);
+  background: #000;
+  cursor: pointer;
+}
+.video-player video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.video-player-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.45) 100%);
+  transition: opacity .3s ease, background .3s ease;
+  z-index: 2;
+}
+.video-player.is-playing-with-sound .video-player-overlay { opacity: 0; pointer-events: none; }
+.video-play-btn {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 32px rgba(0,0,0,.4), 0 0 0 8px rgba(255,255,255,.18);
+  transition: transform .25s ease;
+}
+.video-player:hover .video-play-btn { transform: scale(1.08); }
+.video-play-btn svg { width: 32px; height: 32px; margin-left: 4px; fill: var(--black); }
+.video-hint {
+  position: absolute; bottom: 18px; left: 0; right: 0;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+  font-weight: 600;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ───── SCHOLARSHIP SECTION ───── */
+.scholarship {
+  background: var(--gold);
+  padding: 100px 0;
+  position: relative;
+}
+.scholarship-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.scholarship-copy h2 {
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  font-weight: 900;
+  margin-bottom: 22px;
+  color: var(--black);
+}
+.scholarship-copy p {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  color: var(--black);
+}
+.scholarship-bullets {
+  list-style: none;
+  margin: 28px 0 32px;
+  padding: 0;
+}
+.scholarship-bullets li {
+  padding: 14px 0 14px 36px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--black);
+  position: relative;
+}
+.scholarship-bullets li:last-child { border-bottom: none; }
+.scholarship-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--black);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23FACC08' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='3.5,8 7,11 13,4.5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
+}
+.scholarship-card {
+  background: var(--black);
+  color: #fff;
+  padding: 48px 40px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+}
+.scholarship-card .stat {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.4rem, 7vw, 5rem);
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.scholarship-card .stat-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 28px;
+}
+.scholarship-card p {
+  font-size: 1rem;
+  color: #e8e8e8;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+.scholarship-card .btn { width: 100%; }
+.scholarship-fineprint {
+  font-size: .8rem !important;
+  color: var(--silver) !important;
+  margin: 18px 0 0 !important;
+  line-height: 1.5 !important;
+}
+
+/* ───── COMMENTS SECTION ───── */
+.comments {
+  padding: 100px 0;
+  background: #fff;
+}
+.comments-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+.comments-form {
+  max-width: 720px;
+  margin: 0 auto 64px;
+  background: var(--paper);
+  padding: 36px;
+  border-radius: 18px;
+  border: 1px solid #e8e4da;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-field { display: flex; flex-direction: column; }
+.form-field label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.form-field input,
+.form-field textarea {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1px solid #d4cfc1;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--maroon);
+  box-shadow: 0 0 0 3px rgba(172,22,29,.15);
+}
+.form-field textarea { resize: vertical; min-height: 120px; }
+.form-honeypot { position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none; }
+.form-submit-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.form-meta {
+  font-size: .85rem;
+  color: var(--muted);
+}
+.form-meta.is-success { color: #2a7d3a; font-weight: 700; }
+.form-meta.is-error { color: var(--maroon); font-weight: 700; }
+.comments-wall {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.comment-card {
+  background: var(--paper);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  padding: 22px 26px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.04);
+}
+.comment-card .msg {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.comment-card .who {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.comment-card .relationship {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--maroon);
+  margin-top: 3px;
+}
+.comments-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-style: italic;
+  grid-column: 1 / -1;
+}
+.comments-loading {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: .9rem;
+  grid-column: 1 / -1;
+}
+
+/* ───── FOOTER ───── */
+.footer {
+  background: var(--black);
+  color: #888;
+  text-align: center;
+  padding: 36px 24px;
+  font-size: .9rem;
+  line-height: 1.7;
+}
+.footer a { color: #aaa; text-decoration: underline; }
+
+/* ───── MOBILE ───── */
+@media (max-width: 800px) {
+  .scholarship-inner { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+  .comments-wall { grid-template-columns: 1fr; }
+  .video-player-wrap { max-width: 340px; }
+  .tributes { padding: 70px 0 60px; }
+  .scholarship { padding: 70px 0; }
+  .comments { padding: 70px 0; }
+}
+
+@media (max-width: 480px) {
+  .nav-brand { font-size: .85rem; }
+  .nav-brand img { height: 32px; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-ctas .btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ───── NAV ───── -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_120/v1771419533/incubatoredu-at-bhs-logo-for-black-background_zyawto.png" alt="INCubator@BHS">
+      <span>INCubator@BHS</span>
+    </a>
+    <a href="#scholarship" class="nav-cta">Donate</a>
+  </div>
+</nav>
+
+<!-- ───── HERO ───── -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto"
+         src="https://player.vimeo.com/progressive_redirect/playback/1192226934/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&amp;log_user=0&amp;signature=1128063ef4843badc8eaf9a2af9f0c040a77eb5329378f5241b024b12ce99af8">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Honoring 10 Years of INCubator@BHS</span>
+    <h1>The Dennis Piron Scholarship<br><span class="accent">for Entrepreneurship</span></h1>
+    <p class="hero-sub">Help us launch a $1,000 annual award through the Batavia Foundation for Educational Excellence — starting with the class of 2027.</p>
+    <div class="hero-ctas">
+      <a href="#scholarship" class="btn btn-gold">Donate to the Scholarship</a>
+      <a href="#tributes" class="btn btn-outline">Watch the Tributes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───── TRIBUTES ───── -->
+<section class="tributes" id="tributes">
+  <div class="container">
+
+    <div class="tributes-intro">
+      <span class="eyebrow">In Their Own Words</span>
+      <h2 class="section-title">A decade of impact, told by the people who lived it</h2>
+      <p>Over the last few weeks, dozens of former students, fellow coaches, mentors, parents, and school-board members sent in video tributes for Coach Piron. What came back was a portrait of a teacher who, for ten years, has been quietly shaping how Batavia kids think about work, courage, and what's possible.</p>
+      <p>Watch the full 16-minute tribute reel below — then scroll on for memories, thank-yous, and stories from the people who know him best.</p>
+    </div>
+
+    <!-- 9:16 video player -->
+    <div class="video-player-wrap">
+      <div class="video-player-label">The Full Tribute Reel</div>
+      <div class="video-player-title">16 minutes. 23 voices. One Coach.</div>
+      <div class="video-player" id="tributeVideo">
+        <video id="tributeVideoEl" muted loop playsinline preload="metadata"
+               src="https://player.vimeo.com/progressive_redirect/playback/1192225252/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&amp;log_user=0&amp;signature=6acc52c2e3ce9274cd079aebfec485aad0581965fb1cd1ac240dadca8d8a2cab">
+        </video>
+        <div class="video-player-overlay" id="tributeOverlay">
+          <div class="video-play-btn" aria-label="Play with sound">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-hint" id="tributeHint">Click to play with sound</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───── SCHOLARSHIP ───── -->
+<section class="scholarship" id="scholarship">
+  <div class="container">
+    <div class="scholarship-inner">
+
+      <div class="scholarship-copy">
+        <span class="eyebrow">The Next Chapter</span>
+        <h2>Fund the Dennis Piron Scholarship for Entrepreneurship</h2>
+        <p>In recognition of Dennis' 10 years as the BHS INCubator Entrepreneurship teacher, we're working to launch a scholarship through the <strong>Batavia Foundation for Educational Excellence</strong> to annually award a graduating senior a <strong>$1,000 one-time scholarship.</strong></p>
+        <p>Please join us in raising the initial amount needed to launch this for the <strong>class of 2027</strong> — and to carry Dennis's work forward, one student at a time, for years to come.</p>
+        <ul class="scholarship-bullets">
+          <li>$1,000 one-time scholarship, awarded annually</li>
+          <li>Administered by the Batavia Foundation for Educational Excellence</li>
+          <li>Launches with the graduating class of 2027</li>
+          <li>Honors 10 years of INCubator@BHS leadership</li>
+        </ul>
+      </div>
+
+      <div class="scholarship-card">
+        <div class="stat">$1,000</div>
+        <div class="stat-sub">awarded every year, forever</div>
+        <p>Every contribution helps us build the endowment that funds the scholarship for the class of 2027 — and every class after.</p>
+        <a href="https://ezregister.com/register/order/43313/0/321cf55090489d4cb05ece238cfcaffdc38797ff/" class="btn btn-gold" target="_blank" rel="noopener">Donate Now</a>
+        <p class="scholarship-fineprint">Secure donation page hosted by ezRegister, on behalf of the Batavia Foundation for Educational Excellence.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── COMMENTS ───── -->
+<section class="comments" id="comments">
+  <div class="container">
+
+    <div class="comments-head">
+      <span class="eyebrow">Leave Your Tribute</span>
+      <h2 class="section-title">Didn't get a chance to send a video? Leave a note for Coach Piron.</h2>
+      <p class="section-sub">Share a memory, a thank-you, or a story. Comments post immediately and stay on this page — alongside everyone else who wants to see this scholarship funded.</p>
+    </div>
+
+    <form class="comments-form" id="commentsForm" autocomplete="on">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="cf-name">Your name</label>
+          <input type="text" id="cf-name" name="name" maxlength="60" placeholder="Jane Smith">
+        </div>
+        <div class="form-field">
+          <label for="cf-rel">Your relationship to Dennis</label>
+          <input type="text" id="cf-rel" name="relationship" maxlength="60" placeholder="Former student / Mentor / Parent / Friend">
+        </div>
+      </div>
+      <div class="form-field" style="margin-bottom:20px;">
+        <label for="cf-msg">Your message</label>
+        <textarea id="cf-msg" name="message" maxlength="1000" required placeholder="Share a memory, a thank-you, a story…"></textarea>
+      </div>
+      <!-- Honeypot: bots fill this, humans don't see it -->
+      <div class="form-honeypot" aria-hidden="true">
+        <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <div class="form-submit-row">
+        <button type="submit" class="btn btn-maroon" id="cf-submit">Post Comment</button>
+        <span class="form-meta" id="cf-meta">Comments are public and post immediately.</span>
+      </div>
+    </form>
+
+    <div class="comments-wall" id="commentsWall">
+      <div class="comments-loading">Loading comments…</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───── FOOTER ───── -->
+<footer class="footer">
+  INCubator@BHS &middot; Batavia High School &middot; Batavia, IL<br>
+  Questions? Text <a href="sms:+16306993040">630-699-3040</a>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   CONFIG — paste your Apps Script Web App URL below
+   See: piron-scholarship-comments-setup.md
+   ═══════════════════════════════════════════════════════ */
+const COMMENTS_API_URL = 'https://script.google.com/macros/s/AKfycbwllrwPYHxtMp-3d06M30FGmnIy7zRSIJbzmQ2DoSNaHgZjNZ3WyvvK_j1JYGJdAYE/exec';
+
+/* ───── NAV scroll behavior ───── */
+const navbar = document.getElementById('navbar');
+const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ───── SEED COMMENTS — quotes pulled from the tribute video reel ─────
+   These appear at the bottom of the comments wall so the page is populated
+   from day one. New visitor comments post above these. Edit / remove freely. */
+const SEED_COMMENTS = [
+  {
+    message: "There is no wall. You're making this wall for yourself. There is a way, and you're gonna figure it out on your own — because that's just like real life.",
+    name: "Colin Hervey",
+    relationship: "Former student"
+  },
+  {
+    message: "I hated football when I met Coach Piron in 2019. In 10 minutes, I loved football — because of how he mentored these young men to be kind, hardworking, never give up, and care for the community.",
+    name: "Gary Ricke",
+    relationship: "Mentor"
+  },
+  {
+    message: "I don't think I've ever met anybody quite like him in how he interacts and mentors these people, even when he's calling kids out. There's a tough love that prepares them in ways I don't know that college does. Nobody like him. Nobody.",
+    name: "Gary Ricke",
+    relationship: "Mentor"
+  },
+  {
+    message: "Your servant leadership and the culture you've created of always putting students first has benefited generations of students and made Batavia a better place to live.",
+    name: "Aaron Kilburg",
+    relationship: "BPS 101 School Board Member"
+  },
+  {
+    message: "His impact on the Batavia community could not be overstated. He's truly built a legacy that will continue to shape Batavia for many years to come.",
+    name: "Emily Matile",
+    relationship: "INCubator Mentor"
+  },
+  {
+    message: "He is endlessly working to find ways to support kids in helping them be successful in the future — making connections with businesses, creating opportunities, helping them start up businesses, helping them have conversations about life and their future goals.",
+    name: "Mike Theriault",
+    relationship: "Fellow Coach & Teacher"
+  },
+  {
+    message: "I'm sure gonna miss being the Paula Abdul to your Simon Cowell in the way we coach and provide feedback to these students each year. It's been such an amazing ride.",
+    name: "",
+    relationship: "INCubator Mentor"
+  },
+  {
+    message: "He teaches the kids it's not okay to just come and watch. You have to actually take action. The world needs more people who are willing to not just have an opinion, but to come in and make things better.",
+    name: "Lisa Hichens",
+    relationship: "INCubator Mentor"
+  },
+  {
+    message: "Watching the hundreds of students who have come through that class — who they were during their first week and what they have become on pitch night. The maturity, the communication skills, the teamwork, the networking — those are life skills they will carry for the rest of their lives.",
+    name: "",
+    relationship: "Long-time INCubator Mentor"
+  },
+  {
+    message: "The night before Christmas, my son told Santa the one thing he wanted was a Batavia football helmet. I emailed asking what I could do — and you put a little helmet out on your porch with stickers and decals. Thank you, forever.",
+    name: "",
+    relationship: "Parent"
+  }
+];
+
+/* ───── 9:16 VIDEO PLAYER (hover-to-play muted, click-to-play with sound) ───── */
+const tributeVideo = document.getElementById('tributeVideo');
+const tributeVideoEl = document.getElementById('tributeVideoEl');
+const tributeOverlay = document.getElementById('tributeOverlay');
+const tributeHint = document.getElementById('tributeHint');
+
+// Auto-play muted when in viewport (and when hovered)
+const ioVideo = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && tributeVideoEl.muted) {
+      tributeVideoEl.play().catch(() => {});
+    } else if (!e.isIntersecting && tributeVideoEl.muted) {
+      tributeVideoEl.pause();
+    }
+  });
+}, { threshold: 0.4 });
+ioVideo.observe(tributeVideo);
+
+tributeVideo.addEventListener('mouseenter', () => {
+  if (tributeVideoEl.muted) tributeVideoEl.play().catch(() => {});
+});
+
+// Click anywhere on the player → play with sound from the beginning
+tributeVideo.addEventListener('click', () => {
+  if (tributeVideo.classList.contains('is-playing-with-sound')) return;
+  tributeVideo.classList.add('is-playing-with-sound');
+  tributeVideoEl.muted = false;
+  tributeVideoEl.loop = false;
+  tributeVideoEl.controls = true;
+  tributeVideoEl.currentTime = 0;
+  tributeVideoEl.play().catch(() => {});
+  if (tributeHint) tributeHint.style.display = 'none';
+});
+
+/* ───── COMMENTS ───── */
+const commentsWall = document.getElementById('commentsWall');
+const commentsForm = document.getElementById('commentsForm');
+const cfMeta = document.getElementById('cf-meta');
+const cfSubmit = document.getElementById('cf-submit');
+const RATE_LIMIT_KEY = 'piron_last_comment_at';
+const RATE_LIMIT_MS = 30 * 1000;
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function renderComment(c) {
+  const name = c.name && c.name.trim() ? escapeHtml(c.name.trim()) : 'Anonymous';
+  const rel = c.relationship && c.relationship.trim() ? escapeHtml(c.relationship.trim()) : '';
+  return `
+    <div class="comment-card">
+      <div class="msg">${escapeHtml(c.message)}</div>
+      <div class="who">${name}</div>
+      ${rel ? `<div class="relationship">${rel}</div>` : ''}
+    </div>
+  `;
+}
+
+function renderWall(userComments) {
+  // User-submitted comments appear at the top (newest first, already reversed
+  // server-side). Seed comments from the tribute video always anchor the wall.
+  const all = (Array.isArray(userComments) ? userComments : []).concat(SEED_COMMENTS);
+  commentsWall.innerHTML = all.map(renderComment).join('');
+}
+
+async function loadComments() {
+  if (!COMMENTS_API_URL || COMMENTS_API_URL.includes('PASTE_YOUR')) {
+    renderWall([]);
+    return;
+  }
+  try {
+    const res = await fetch(COMMENTS_API_URL, { method: 'GET' });
+    const data = await res.json();
+    renderWall(data.status === 'ok' && Array.isArray(data.comments) ? data.comments : []);
+  } catch (err) {
+    // If the API is unreachable, the page still feels alive with the seeds.
+    renderWall([]);
+  }
+}
+
+commentsForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('cf-name').value.trim();
+  const relationship = document.getElementById('cf-rel').value.trim();
+  const message = document.getElementById('cf-msg').value.trim();
+  const website = commentsForm.querySelector('[name="website"]').value;
+
+  if (!message) {
+    setFormMeta('Please write a message before posting.', 'error');
+    return;
+  }
+
+  // Client-side rate limit
+  const lastAt = parseInt(localStorage.getItem(RATE_LIMIT_KEY) || '0', 10);
+  if (lastAt && Date.now() - lastAt < RATE_LIMIT_MS) {
+    setFormMeta('Please wait a moment before posting another comment.', 'error');
+    return;
+  }
+
+  if (!COMMENTS_API_URL || COMMENTS_API_URL.includes('PASTE_YOUR')) {
+    setFormMeta('Comments backend not configured yet — coming soon.', 'error');
+    return;
+  }
+
+  cfSubmit.disabled = true;
+  cfSubmit.textContent = 'Posting…';
+  setFormMeta('Posting your comment…', '');
+
+  try {
+    // NOTE: no Content-Type header — keeps the request "simple" so Apps Script
+    // doesn't need CORS preflight. Apps Script parses the JSON body itself.
+    const res = await fetch(COMMENTS_API_URL, {
+      method: 'POST',
+      body: JSON.stringify({ name, relationship, message, website })
+    });
+    const data = await res.json();
+    if (data.status === 'ok') {
+      localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
+      // Optimistically prepend the new comment above the seed wall.
+      const newCard = renderComment({ name, relationship, message });
+      commentsWall.insertAdjacentHTML('afterbegin', newCard);
+      commentsForm.reset();
+      setFormMeta('Thanks — your comment is posted!', 'success');
+    } else {
+      setFormMeta(data.error || 'Something went wrong. Please try again.', 'error');
+    }
+  } catch (err) {
+    setFormMeta('Could not post right now. Please try again in a moment.', 'error');
+  } finally {
+    cfSubmit.disabled = false;
+    cfSubmit.textContent = 'Post Comment';
+  }
+});
+
+function setFormMeta(text, kind) {
+  cfMeta.textContent = text;
+  cfMeta.classList.remove('is-success', 'is-error');
+  if (kind === 'success') cfMeta.classList.add('is-success');
+  if (kind === 'error') cfMeta.classList.add('is-error');
+}
+
+loadComments();
+</script>
+
+</body>
+</html>
