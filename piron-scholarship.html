@@ -106,12 +106,11 @@ a { color: inherit; }
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-brand {
-  display: flex; align-items: center; gap: 12px;
-  font-family: 'Montserrat', sans-serif; font-weight: 700;
-  color: #fff; text-decoration: none; font-size: 1rem;
-  letter-spacing: .5px;
+  display: flex; align-items: center;
+  text-decoration: none;
 }
-.nav-brand img { height: 38px; width: auto; }
+.nav-brand img { height: 44px; width: auto; transition: height .3s ease; display: block; }
+.navbar.scrolled .nav-brand img { height: 36px; }
 .nav-cta {
   padding: 10px 22px; font-size: .9rem; border-radius: 50px;
   background: var(--gold); color: var(--black);
@@ -475,8 +474,8 @@ a { color: inherit; }
 }
 
 @media (max-width: 480px) {
-  .nav-brand { font-size: .85rem; }
-  .nav-brand img { height: 32px; }
+  .nav-brand img { height: 36px; }
+  .navbar.scrolled .nav-brand img { height: 32px; }
   .hero { padding: 100px 20px 60px; }
   .hero-ctas .btn { width: 100%; }
 }
@@ -487,9 +486,8 @@ a { color: inherit; }
 <!-- ───── NAV ───── -->
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="#" class="nav-brand">
-      <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_120/v1771419533/incubatoredu-at-bhs-logo-for-black-background_zyawto.png" alt="INCubator@BHS">
-      <span>INCubator@BHS</span>
+    <a href="https://bhsincubator.org/" class="nav-brand" aria-label="INCubator@BHS">
+      <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/v1770840686/incubatoredu-at-bhs-logo_udz7pr.png" alt="INCubator@BHS">
     </a>
     <a href="#scholarship" class="nav-cta">Donate</a>
   </div>
